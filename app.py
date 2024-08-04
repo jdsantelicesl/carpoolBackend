@@ -11,6 +11,9 @@ load_dotenv()
 uri = os.getenv('URI')
 client = MongoClient(uri)
 
+# stores database instance in the session
+app.config["MONGO_CLIENT"] = client
+
 # this imports all of the routes in blueprints/ride.py
 # the routes will be accesses via "/ride/" + route
 app.register_blueprint(ride_bp, url_prefix="/ride")

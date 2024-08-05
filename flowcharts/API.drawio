@@ -1,79 +1,67 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0" version="24.7.6">
   <diagram name="Page-1" id="7reqi-epdFY9OO5ob8ub">
-    <mxGraphModel dx="1426" dy="783" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="786" dy="457" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-1" value="React" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-1" value="React" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="90" y="180" width="150" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-2" value="JSON {&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;username: username&lt;/span&gt;&lt;div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;token: access token&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;ride data : data }&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="pMk1YJqMjSrCBwWVHHjo-1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-2" value="JSON {&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;user_id: id&lt;/span&gt;&lt;div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;token: access token&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;ride data : data }&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="pMk1YJqMjSrCBwWVHHjo-1" vertex="1">
           <mxGeometry x="10" y="30" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-3" value="Receive token, reroute to last page visited" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pMk1YJqMjSrCBwWVHHjo-1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-3" value="success" style="rounded=0;whiteSpace=wrap;html=1;" parent="pMk1YJqMjSrCBwWVHHjo-1" vertex="1">
           <mxGeometry x="10" y="160" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-4" value="Flask" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-4" value="Flask" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="380" y="180" width="150" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-5" value="Validate username and token" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pMk1YJqMjSrCBwWVHHjo-4">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-5" value="authenticate token using Auth0 key" style="rounded=0;whiteSpace=wrap;html=1;" parent="pMk1YJqMjSrCBwWVHHjo-4" vertex="1">
           <mxGeometry x="10" y="45" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="pMk1YJqMjSrCBwWVHHjo-4" source="pMk1YJqMjSrCBwWVHHjo-5" target="pMk1YJqMjSrCBwWVHHjo-5">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="pMk1YJqMjSrCBwWVHHjo-4" source="pMk1YJqMjSrCBwWVHHjo-5" target="pMk1YJqMjSrCBwWVHHjo-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-7" value="If token invalid, return code 401.&lt;br&gt;Else, post to database" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pMk1YJqMjSrCBwWVHHjo-4">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-7" value="If token invalid, return code 401.&lt;br&gt;Else, post to database" style="rounded=0;whiteSpace=wrap;html=1;" parent="pMk1YJqMjSrCBwWVHHjo-4" vertex="1">
           <mxGeometry x="9" y="89" width="130" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-8" value="Success?" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pMk1YJqMjSrCBwWVHHjo-4">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-8" value="Success?" style="rounded=0;whiteSpace=wrap;html=1;" parent="pMk1YJqMjSrCBwWVHHjo-4" vertex="1">
           <mxGeometry x="10" y="155" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-10" value="POST &quot;/ride/post&quot;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-10" value="POST &quot;/ride/post&quot;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="250" y="220" width="115" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-11" value="MongoDB" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-11" value="MongoDB" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="650" y="180" width="150" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-12" value="Check is token is in object with that user ID.&lt;div&gt;(is token valid for user)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pMk1YJqMjSrCBwWVHHjo-11">
-          <mxGeometry x="10" y="48" width="130" height="55" as="geometry" />
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="pMk1YJqMjSrCBwWVHHjo-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="75" y="103" as="sourcePoint" />
+            <mxPoint x="75" y="103" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="pMk1YJqMjSrCBwWVHHjo-11" source="pMk1YJqMjSrCBwWVHHjo-12" target="pMk1YJqMjSrCBwWVHHjo-12">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-14" value="Add document, ride object" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pMk1YJqMjSrCBwWVHHjo-11">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-14" value="Add document, ride object" style="rounded=0;whiteSpace=wrap;html=1;" parent="pMk1YJqMjSrCBwWVHHjo-11" vertex="1">
           <mxGeometry x="10" y="120" width="130" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pMk1YJqMjSrCBwWVHHjo-2" target="pMk1YJqMjSrCBwWVHHjo-5">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="pMk1YJqMjSrCBwWVHHjo-2" target="pMk1YJqMjSrCBwWVHHjo-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-21" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Post Ride&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-21" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Post Ride&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="400" y="133" width="100" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="520" y="240" as="sourcePoint" />
-            <mxPoint x="660" y="240" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="660" y="280" as="sourcePoint" />
-            <mxPoint x="520" y="280" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="520" y="309.5" as="sourcePoint" />
             <mxPoint x="660" y="309.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="660" y="350" as="sourcePoint" />
             <mxPoint x="520" y="350" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="390" y="350" as="sourcePoint" />
             <mxPoint x="230" y="350" as="targetPoint" />
@@ -83,8 +71,78 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="pMk1YJqMjSrCBwWVHHjo-27" value="return code 200 (or 500 if fail)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="pMk1YJqMjSrCBwWVHHjo-27" value="return code 200 (or 500 if fail)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="250" y="327" width="115" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-1" value="React" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="597" width="150" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-2" value="JSON {&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;username: username&lt;/span&gt;&lt;div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;token: access token&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;user data : data }&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="JZZQtJLK8SV5JRfwRQf_-1">
+          <mxGeometry x="10" y="30" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-3" value="Receive user_id generated by mongo. Use it for requests" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="JZZQtJLK8SV5JRfwRQf_-1">
+          <mxGeometry x="10" y="160" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-4" value="Flask" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="597" width="150" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-5" value="authenticate token using Auth0 key" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="JZZQtJLK8SV5JRfwRQf_-4">
+          <mxGeometry x="10" y="45" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="JZZQtJLK8SV5JRfwRQf_-4" source="JZZQtJLK8SV5JRfwRQf_-5" target="JZZQtJLK8SV5JRfwRQf_-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-7" value="If token invalid, return code 401.&lt;br&gt;Else, post to database" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="JZZQtJLK8SV5JRfwRQf_-4">
+          <mxGeometry x="9" y="89" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-8" value="Success?" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="JZZQtJLK8SV5JRfwRQf_-4">
+          <mxGeometry x="10" y="155" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-9" value="POST &quot;/user/new&quot;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="637" width="115" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-10" value="MongoDB" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="597" width="150" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="JZZQtJLK8SV5JRfwRQf_-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="75" y="103" as="sourcePoint" />
+            <mxPoint x="75" y="103" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-12" value="Add document, user object" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="JZZQtJLK8SV5JRfwRQf_-10">
+          <mxGeometry x="10" y="120" width="130" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JZZQtJLK8SV5JRfwRQf_-2" target="JZZQtJLK8SV5JRfwRQf_-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-14" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Create User&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="375" y="550" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="726.5" as="sourcePoint" />
+            <mxPoint x="660" y="726.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="767" as="sourcePoint" />
+            <mxPoint x="520" y="767" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="767" as="sourcePoint" />
+            <mxPoint x="230" y="767" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="300" y="767" />
+              <mxPoint x="300" y="767" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JZZQtJLK8SV5JRfwRQf_-18" value="return code 200 (or 500 if fail)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="744" width="115" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

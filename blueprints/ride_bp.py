@@ -18,6 +18,7 @@ def ridePost():
             origin = data.get("origin")
             day = data.get("day")
             arrival = data.get("arrival")
+            car = data.get('car')
             member = data.get("member")
 
             # init client using reference from app.py
@@ -34,6 +35,7 @@ def ridePost():
                     "origin": origin,
                     "day": day,
                     "arrival": arrival,
+                    "car": car,
                     "members": member
                 }
             )

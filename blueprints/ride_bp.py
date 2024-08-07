@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, current_app, request
 from userFunctions import add_user_rides
+from googleMaps import searchPlace
 from bson import ObjectId
 
 ride_bp = Blueprint("ride", __name__)
@@ -18,6 +19,7 @@ def ridePost():
             origin = data.get("origin")
             day = data.get("day")
             arrival = data.get("arrival")
+            car = data.get('car')
             member = data.get("member")
 
             # init client using reference from app.py
@@ -34,6 +36,7 @@ def ridePost():
                     "origin": origin,
                     "day": day,
                     "arrival": arrival,
+                    "car": car,
                     "members": member
                 }
             )
@@ -44,3 +47,16 @@ def ridePost():
             return jsonify({"message": "error posting ride"}), 500
     else:
         return jsonify({"message": "unauthorized token"}), 401
+    
+@ride_bp.route("/locFind", methods=["GET"])
+def locFind():
+    # get the values passed in url. Format: "/locFind?query=<myquery>&lat=<mylat>&long=<mylong>""
+    query = request.args.get('query')
+    lat = request.args.get('lat')
+    long = request.args.get('long')
+    print(query)
+    try: 
+        results = searchPlace(query, lat, long)
+        return results, 200
+    except: 
+        return "internal server error", 500

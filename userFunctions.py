@@ -8,7 +8,7 @@ client = MongoClient(uri)
 
 db = client['carpool']
 
-# Takes in two bson ids 
+# Takes in two bson ids
 # Adds ride id to respective user
 # returns bool based on success
 def add_user_rides(user_id, ride_id):
@@ -25,3 +25,4 @@ def add_user_rides(user_id, ride_id):
         return True
     else:
         return False
+

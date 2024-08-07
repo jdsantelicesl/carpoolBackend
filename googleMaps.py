@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 API_KEY = os.getenv("GM_KEY")
-print(API_KEY)
 
 def searchPlace(query, lat, long):
     url = "https://places.googleapis.com/v1/places:searchText"

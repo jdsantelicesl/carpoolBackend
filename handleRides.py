@@ -16,7 +16,6 @@ def post_ride(destination, origin, day, arrival, car, member):
     rides = db.get_collection("rides")
     date = datetime.datetime.now()
     dateString = date.strftime("%Y-%m-%d %H:%M:%S")
-    print(dateString)
 
     # data entry
     result = rides.insert_one(
@@ -29,7 +28,7 @@ def post_ride(destination, origin, day, arrival, car, member):
             "members": member,
             "date": {
                 "created": dateString,
-                "modified": dateString
+                "last": dateString
             },
         }
     )

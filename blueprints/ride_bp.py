@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, current_app, request
+from flask import Blueprint, jsonify, current_app, request, Response
 from userFunctions import *
 from handleRides import *
 from googleMaps import searchPlace
@@ -26,29 +26,39 @@ def ridePost():
         try:
             result = post_ride(destination, origin, day, arrival, car, member)
             add_user_rides(ObjectId(member), result.inserted_id)
+            user_activity(ObjectId(member))
             return str(result.inserted_id), 200
         except:
-            return jsonify({"message": "error posting ride"}), 500
+            return Response(
+                response=jsonify({"message": "error posting ride"}),
+                status=500,
+                mimetype="application/json",
+            )
     else:
-        return jsonify({"message": "unauthorized token"}), 401
+        return Response(
+            response=jsonify({"message": "unauthorized token"}),
+            status=401,
+            mimetype="application/json",
+        )
+
 
 @ride_bp.route("/locFind", methods=["GET"])
 def locFind():
     # get the values passed in url. Format: "/locFind?query=<myquery>&lat=<mylat>&long=<mylong>"
-    query = request.args.get('query')
-    lat = request.args.get('lat')
-    long = request.args.get('long')
+    query = request.args.get("query")
+    lat = request.args.get("lat")
+    long = request.args.get("long")
     print(query)
-    try: 
+    try:
         results = searchPlace(query, lat, long)
         return results, 200
-    except: 
+    except:
         return "internal server error", 500
-    
+
 
 @ride_bp.route("/getRides")
 def getRides():
     # get the values passed in url. Format: "/locFind?client_id=<id>"
-    id = request.args.get('client_id')
+    id = request.args.get("client_id")
     result = get_rides(id)
     return "placeholder"

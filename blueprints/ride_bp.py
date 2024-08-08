@@ -34,7 +34,7 @@ def ridePost():
 
 @ride_bp.route("/locFind", methods=["GET"])
 def locFind():
-    # get the values passed in url. Format: "/locFind?query=<myquery>&lat=<mylat>&long=<mylong>""
+    # get the values passed in url. Format: "/locFind?query=<myquery>&lat=<mylat>&long=<mylong>"
     query = request.args.get('query')
     lat = request.args.get('lat')
     long = request.args.get('long')
@@ -44,3 +44,11 @@ def locFind():
         return results, 200
     except: 
         return "internal server error", 500
+    
+
+@ride_bp.route("/getRides")
+def getRides():
+    # get the values passed in url. Format: "/locFind?client_id=<id>"
+    id = request.args.get('client_id')
+    result = get_rides(id)
+    return "placeholder"

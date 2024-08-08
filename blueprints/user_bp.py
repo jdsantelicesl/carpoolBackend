@@ -3,17 +3,33 @@
 
 from flask import Blueprint, jsonify, current_app, request, Response
 from userFunctions import create_user
+from marshmallow import Schema, fields, validate
 
 user_bp = Blueprint("user", __name__)
+
+class UserSchema(Schema):
+    username = fields.Str(required=True, validate=validate.Length(min=1))
+    name = fields.Str(required=True, validate=validate.Length(min=1))
+    email = fields.Email(required=True)
+
+user_schema = UserSchema()
 
 
 @user_bp.route("/createUser", methods=["POST"])
 def createUser():
     # unpack data
     data = request.get_json()
-    username = data.get("username")
-    name = data.get("name")
-    email = data.get("email")
+    try:
+        validated_data = user_schema.load(data)
+        username = validated_data.get("username")
+        name = validated_data.get("name")
+        email = validated_data.get("email")
+    except:
+        return Response(
+            response=jsonify({"message": "bad request"}),
+            status=400,
+            mimetype="application/json"
+        )
 
     # place holder, check auth. To do...
     auth = True

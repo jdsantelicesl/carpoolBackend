@@ -1,15 +1,36 @@
-from flask import Blueprint, jsonify, current_app, request, Response
+from flask import Blueprint, jsonify, current_app, request
 from userFunctions import *
 from handleRides import *
 from googleMaps import searchPlace
 from bson import ObjectId
+from marshmallow import Schema, fields, validate
 
 ride_bp = Blueprint("ride", __name__)
+
+def validate_day(n):
+    # validate that day is between 1-7, Sun-Sat
+    if not (1 <= n <= 7):
+        raise Exception("input error")
+
+class PostSchema(Schema):
+    destination = fields.Str(required=True, validate=validate.Length(min=1))
+    origin = fields.Str(required=True, validate=validate.Length(min=1))
+    day = fields.Int(required=True, validate=validate_day)
+    arrival = fields.Str(required=True, validate=validate.Length(min=1))
+    car = fields.Bool(required=True)
+    member = fields.Str(required=True, validate=validate.Length(min=1))
+
+post_schema = PostSchema()
 
 
 @ride_bp.route("/post", methods=["POST"])
 def ridePost():
-    data = request.get_json()
+    input_data = request.get_json()
+
+    try:
+        data = post_schema.load(input_data)
+    except:
+        return jsonify({"message": "bad request"}), 400
 
     # place holder, check auth. To do...
     auth = True
@@ -29,17 +50,9 @@ def ridePost():
             user_activity(ObjectId(member))
             return str(result.inserted_id), 200
         except:
-            return Response(
-                response=jsonify({"message": "error posting ride"}),
-                status=500,
-                mimetype="application/json",
-            )
+            return jsonify({"message": "error posting ride"}), 500
     else:
-        return Response(
-            response=jsonify({"message": "unauthorized token"}),
-            status=401,
-            mimetype="application/json",
-        )
+        return jsonify({"message": "unauthorized token"}), 401
 
 
 @ride_bp.route("/locFind", methods=["GET"])

@@ -7,16 +7,11 @@ from marshmallow import Schema, fields, validate
 
 ride_bp = Blueprint("ride", __name__)
 
-def validate_day(n):
-    # validate that day is between 1-7, Sun-Sat
-    if not (1 <= n <= 7):
-        raise Exception("input error")
-
 class PostSchema(Schema):
     destination = fields.Str(required=True, validate=validate.Length(min=1))
     origin = fields.Str(required=True, validate=validate.Length(min=1))
-    day = fields.Int(required=True, validate=validate_day)
-    arrival = fields.Str(required=True, validate=validate.Length(min=1))
+    day = fields.Int(required=True, validate=validate.Range(min=1, max=7))
+    arrival = fields.Float(required=True, validate=validate.Range(min=0.0, max=24.0))
     car = fields.Bool(required=True)
     member = fields.Str(required=True, validate=validate.Length(min=1))
 

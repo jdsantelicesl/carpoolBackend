@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
-import datetime
+from datetime import datetime
 
 load_dotenv()
 uri = os.getenv("URI")
@@ -15,8 +15,7 @@ def create_user(name, username, email):
     # find where to store data
     users = db.get_collection("users")
 
-    date = datetime.datetime.now()
-    dateString = date.strftime("%Y-%m-%d %H:%M:%S")
+    date = datetime.now()
 
     # data entry
     result = users.insert_one(
@@ -25,8 +24,8 @@ def create_user(name, username, email):
             "name": name,
             "email": email,
             "date": {
-                "created": dateString,
-                "last": dateString,
+                "created": date,
+                "last": date,
             }
         }
     )
@@ -35,11 +34,10 @@ def create_user(name, username, email):
 def user_activity(id):
     users = db.get_collection("users")
 
-    date = datetime.datetime.now()
-    dateString = date.strftime("%Y-%m-%d %H:%M:%S")
+    date = datetime.now()
 
     query_filter = {'_id' : id}
-    update = {'$set': {'date.last': dateString}}
+    update = {'$set': {'date.last': date}}
     users.update_one(query_filter, update)
 
 

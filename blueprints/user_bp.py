@@ -25,11 +25,7 @@ def createUser():
         name = validated_data.get("name")
         email = validated_data.get("email")
     except:
-        return Response(
-            response=jsonify({"message": "bad request"}),
-            status=400,
-            mimetype="application/json"
-        )
+        return jsonify({"message": "bad request"}), 400
 
     # place holder, check auth. To do...
     auth = True
@@ -38,20 +34,8 @@ def createUser():
         try:
             id = create_user(username, name, email)
             response = {"id": id}
-            return Response(
-                response=jsonify(response),
-                status=200,
-                mimetype="application/json",
-            )
+            return jsonify(response), 200
         except:
-            return Response(
-                response=jsonify({"message": "error creating user"}),
-                status=500,
-                mimetype="application/json",
-            )
+            return jsonify({"message": "error creating user"}), 500
     else:
-        return Response(
-            response=jsonify({"message": "unauthorized token"}),
-            status=401,
-            mimetype="application/json",
-        )
+        return jsonify({"message": "unauthorized token"}), 401
